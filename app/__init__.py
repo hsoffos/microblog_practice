@@ -35,7 +35,7 @@ if not app.debug:  # Only use email logger when app is running without debug mod
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
 
-    if not os.path.exist('logs'):
+    if not os.path.exists('logs'):
         os.mkdir('logs')
     file_handler = RotatingFileHandler('logs/microblog.log', maxBytes=10240, backupCount=10)
     file_handler.setFormatter(logging.Formatter(
