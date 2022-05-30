@@ -3,7 +3,8 @@ import unittest
 from app import app, db
 from app.models import User, Post
 
-class USerModelCase(unittest.TestCase):
+
+class UserModelCase(unittest.TestCase):
     def setUp(self):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'  # sqlite:// creates an in-memory db instead of actual
         db.create_all()

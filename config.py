@@ -14,3 +14,4 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['MAIL_EMAIL']  # Error reports sent here
     POSTS_PER_PAGE = 10
+    LANGUAGES = ['en', 'es']
