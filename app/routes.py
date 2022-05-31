@@ -3,8 +3,9 @@ from app.email import send_password_reset_email
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, \
                         ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
+from app.translate import translate
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_babel import _, get_locale
 from flask_login import current_user, login_user, logout_user, login_required
 from langdetect import detect, LangDetectException
@@ -204,3 +205,10 @@ def unfollow(username):
     else:
         return redirect(url_for('index'))
 
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({'text': translate(request.form['text'],
+                                      request.form['source_language'],
+                                      request.form['dest_language'])})
